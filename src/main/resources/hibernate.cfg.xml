@@ -8,7 +8,7 @@
             com.microsoft.sqlserver.jdbc.SQLServerDriver
         </property>
         <property name="hibernate.connection.url">
-            jdbc:sqlserver://localhost:1433;databaseName=testdb;encrypt=true;trustServerCertificate=true;;
+            jdbc:sqlserver://localhost:1433;databaseName=ORM.M.A101db;encrypt=true;trustServerCertificate=true;;
         </property>
         <property name="hibernate.connection.username">
             halh
@@ -28,6 +28,7 @@
         <property name="format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
         <!-- List mapping annotation classes -->
-        <mapping class="fa.education.entity.Car"/>
+        <mapping class="fa.education.entity.Room"/>
+        <mapping class="fa.education.entity.RoomDetail"/>
     </session-factory>
 </hibernate-configuration>
