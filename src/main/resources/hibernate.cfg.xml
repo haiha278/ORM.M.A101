@@ -19,14 +19,19 @@
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
-        <property name="hibernate.dialect">
-            org.hibernate.dialect.SQLServerDialect
-        </property>
+<!--        <property name="hibernate.dialect">-->
+<!--            org.hibernate.dialect.SQLServerDialect-->
+<!--        </property>-->
 
         <!-- Show all executed SQL to stdout -->
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.dbcp.initialSize">5</property>
+        <property name="hibernate.dbcp.maxTotal">20</property>
+        <property name="hibernate.dbcp.maxIdle">10</property>
+        <property name="hibernate.dbcp.minIdle">5</property>
+        <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         <!-- List mapping annotation classes -->
         <mapping class="fa.education.entities.Room"/>
         <mapping class="fa.education.entities.RoomDetail"/>

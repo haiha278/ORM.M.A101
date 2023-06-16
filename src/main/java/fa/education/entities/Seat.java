@@ -1,6 +1,7 @@
 package fa.education.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "Seat")

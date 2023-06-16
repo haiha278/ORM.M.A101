@@ -1,19 +1,37 @@
 package fa.education.session;
 
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class SessionFactory {
-    private static StandardServiceRegistry standardServiceRegistry;
-    private static SessionFactory sessionFactory;
+    private static StandardServiceRegistry registry;
+    private static org.hibernate.SessionFactory sessionFactory;
 
     public org.hibernate.SessionFactory sessionFactory() {
-        org.hibernate.cfg.Configuration configuration = new Configuration().configure();
-        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
-        builder.applySettings(configuration.getProperties());
-        StandardServiceRegistry serviceRegistry = builder.build();
-        org.hibernate.SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        if (sessionFactory == null) {
+            try {
+                // Create registry
+                registry = new StandardServiceRegistryBuilder().configure().build();
+
+                // Create MetadataSources
+                MetadataSources sources = new MetadataSources(registry);
+
+                // Create Metadata
+                Metadata metadata = sources.getMetadataBuilder().build();
+
+                // Create SessionFactory
+                sessionFactory = metadata.getSessionFactoryBuilder().build();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                if (registry != null) {
+                    StandardServiceRegistryBuilder.destroy(registry);
+                }
+            }
+        }
         return sessionFactory;
     }
 }
