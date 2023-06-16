@@ -1,4 +1,4 @@
-package fa.education.entity;
+package fa.education.entities;
 
 import javax.persistence.*;
 import java.util.Date;

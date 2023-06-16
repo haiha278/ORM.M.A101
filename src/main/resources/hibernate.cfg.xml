@@ -26,9 +26,10 @@
         <!-- Show all executed SQL to stdout -->
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- List mapping annotation classes -->
-        <mapping class="fa.education.entity.Room"/>
-        <mapping class="fa.education.entity.RoomDetail"/>
+        <mapping class="fa.education.entities.Room"/>
+        <mapping class="fa.education.entities.RoomDetail"/>
+        <mapping class="fa.education.entities.Seat"/>
     </session-factory>
 </hibernate-configuration>

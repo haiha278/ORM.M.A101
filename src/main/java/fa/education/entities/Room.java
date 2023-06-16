@@ -1,6 +1,7 @@
-package fa.education.entity;
+package fa.education.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Room")
@@ -14,6 +15,8 @@ public class Room {
     private int seatQuantity;
     @OneToOne(mappedBy = "room", orphanRemoval = true)
     private RoomDetail roomDetail;
+    @OneToMany(mappedBy = "room")
+    private List<Seat> seats;
 
     public int getRoomId() {
         return roomId;
@@ -37,5 +40,21 @@ public class Room {
 
     public void setSeatQuantity(int seatQuantity) {
         this.seatQuantity = seatQuantity;
+    }
+
+    public RoomDetail getRoomDetail() {
+        return roomDetail;
+    }
+
+    public void setRoomDetail(RoomDetail roomDetail) {
+        this.roomDetail = roomDetail;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
     }
 }
